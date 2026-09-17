@@ -1,0 +1,33 @@
+tables:
+  A = 14835720
+  B = 113
+  C = 2609129
+  D = 1380035
+  E = 4
+  F = 2528312
+  G = 234997
+  H = 7
+
+n1=scan(A)  in=14835720 out=14835720 read=all
+n2=scan(B)  in=113 out=113 read=all
+n3=filter(n2)  in=113 out=1
+n4=join(n1,n3)  lin=14835720 rin=1 out=3036719
+n5=scan(C)  in=2609129 out=2609129 read=all
+n6=scan(D)  in=1380035 out=1380035 read=all
+n7=filter(n2)  in=113 out=1
+n8=join(n6,n7)  lin=1380035 rin=1 out=459925
+n9=join(n5,n8)  lin=2609129 rin=459925 out=1354883
+n10=scan(E)  in=4 out=4 read=all
+n11=filter(n10)  in=4 out=1
+n12=join(n9,n11)  lin=1354883 rin=1 out=584222
+n13=join(n4,n12)  lin=3036719 rin=584222 out=2504990
+n14=scan(F)  in=2528312 out=2504990 read=part
+n15=filter(n14)  in=2504990 out=0
+n16=join(n13,n15)  lin=2504990 rin=0 out=926
+n17=scan(G)  in=234997 out=926 read=part
+n18=filter(n17)  in=926 out=926
+n19=join(n16,n18)  lin=926 rin=926 out=563
+n20=scan(H)  in=7 out=563 read=all
+n21=filter(n20)  in=563 out=563
+n22=join(n19,n21)  lin=563 rin=563 out=372
+n23=aggregate(n22)  in=372 out=1  === query_1 ===

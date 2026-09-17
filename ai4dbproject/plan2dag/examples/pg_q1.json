@@ -1,0 +1,35 @@
+[
+  {
+    "Plan": {
+      "Node Type": "Aggregate",
+      "Strategy": "Plain",
+      "Actual Rows": 1,
+      "Actual Loops": 1,
+      "Plans": [
+        {
+          "Node Type": "Hash Join",
+          "Join Type": "Inner",
+          "Hash Cond": "o.cid = c.id",
+          "Actual Rows": 8000,
+          "Actual Loops": 1,
+          "Plans": [
+            {
+              "Node Type": "Seq Scan",
+              "Relation Name": "orders",
+              "Filter": "(status = 'O'::text)",
+              "Rows Removed by Filter": 400000,
+              "Actual Rows": 100000,
+              "Actual Loops": 1
+            },
+            {
+              "Node Type": "Seq Scan",
+              "Relation Name": "customer",
+              "Actual Rows": 100000,
+              "Actual Loops": 1
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,354 @@
+{
+  "tables": {
+    "A": 14835720,
+    "B": 113,
+    "C": 2609129,
+    "D": 1380035,
+    "E": 4,
+    "F": 2528312,
+    "G": 234997,
+    "H": 7
+  },
+  "nodes": [
+    {
+      "id": "n1",
+      "op": "scan",
+      "out_rows": 14835720,
+      "in_rows": 14835720,
+      "left_in_rows": null,
+      "right_in_rows": null,
+      "table": "A",
+      "children": [],
+      "queries": [
+        "query_1"
+      ]
+    },
+    {
+      "id": "n2",
+      "op": "scan",
+      "out_rows": 113,
+      "in_rows": 113,
+      "left_in_rows": null,
+      "right_in_rows": null,
+      "table": "B",
+      "children": [],
+      "queries": [
+        "query_1"
+      ]
+    },
+    {
+      "id": "n3",
+      "op": "filter",
+      "out_rows": 1,
+      "in_rows": 113,
+      "left_in_rows": null,
+      "right_in_rows": null,
+      "table": null,
+      "children": [
+        "n2"
+      ],
+      "queries": [
+        "query_1"
+      ]
+    },
+    {
+      "id": "n4",
+      "op": "join",
+      "out_rows": 3036719,
+      "in_rows": null,
+      "left_in_rows": 14835720,
+      "right_in_rows": 1,
+      "table": null,
+      "children": [
+        "n1",
+        "n3"
+      ],
+      "queries": [
+        "query_1"
+      ]
+    },
+    {
+      "id": "n5",
+      "op": "scan",
+      "out_rows": 2609129,
+      "in_rows": 2609129,
+      "left_in_rows": null,
+      "right_in_rows": null,
+      "table": "C",
+      "children": [],
+      "queries": [
+        "query_1"
+      ]
+    },
+    {
+      "id": "n6",
+      "op": "scan",
+      "out_rows": 1380035,
+      "in_rows": 1380035,
+      "left_in_rows": null,
+      "right_in_rows": null,
+      "table": "D",
+      "children": [],
+      "queries": [
+        "query_1"
+      ]
+    },
+    {
+      "id": "n7",
+      "op": "filter",
+      "out_rows": 1,
+      "in_rows": 113,
+      "left_in_rows": null,
+      "right_in_rows": null,
+      "table": null,
+      "children": [
+        "n2"
+      ],
+      "queries": [
+        "query_1"
+      ]
+    },
+    {
+      "id": "n8",
+      "op": "join",
+      "out_rows": 459925,
+      "in_rows": null,
+      "left_in_rows": 1380035,
+      "right_in_rows": 1,
+      "table": null,
+      "children": [
+        "n6",
+        "n7"
+      ],
+      "queries": [
+        "query_1"
+      ]
+    },
+    {
+      "id": "n9",
+      "op": "join",
+      "out_rows": 1354883,
+      "in_rows": null,
+      "left_in_rows": 2609129,
+      "right_in_rows": 459925,
+      "table": null,
+      "children": [
+        "n5",
+        "n8"
+      ],
+      "queries": [
+        "query_1"
+      ]
+    },
+    {
+      "id": "n10",
+      "op": "scan",
+      "out_rows": 4,
+      "in_rows": 4,
+      "left_in_rows": null,
+      "right_in_rows": null,
+      "table": "E",
+      "children": [],
+      "queries": [
+        "query_1"
+      ]
+    },
+    {
+      "id": "n11",
+      "op": "filter",
+      "out_rows": 1,
+      "in_rows": 4,
+      "left_in_rows": null,
+      "right_in_rows": null,
+      "table": null,
+      "children": [
+        "n10"
+      ],
+      "queries": [
+        "query_1"
+      ]
+    },
+    {
+      "id": "n12",
+      "op": "join",
+      "out_rows": 584222,
+      "in_rows": null,
+      "left_in_rows": 1354883,
+      "right_in_rows": 1,
+      "table": null,
+      "children": [
+        "n9",
+        "n11"
+      ],
+      "queries": [
+        "query_1"
+      ]
+    },
+    {
+      "id": "n13",
+      "op": "join",
+      "out_rows": 2504990,
+      "in_rows": null,
+      "left_in_rows": 3036719,
+      "right_in_rows": 584222,
+      "table": null,
+      "children": [
+        "n4",
+        "n12"
+      ],
+      "queries": [
+        "query_1"
+      ]
+    },
+    {
+      "id": "n14",
+      "op": "scan",
+      "out_rows": 2504990,
+      "in_rows": 2528312,
+      "left_in_rows": null,
+      "right_in_rows": null,
+      "table": "F",
+      "children": [],
+      "queries": [
+        "query_1"
+      ]
+    },
+    {
+      "id": "n15",
+      "op": "filter",
+      "out_rows": 0,
+      "in_rows": 2504990,
+      "left_in_rows": null,
+      "right_in_rows": null,
+      "table": null,
+      "children": [
+        "n14"
+      ],
+      "queries": [
+        "query_1"
+      ]
+    },
+    {
+      "id": "n16",
+      "op": "join",
+      "out_rows": 926,
+      "in_rows": null,
+      "left_in_rows": 2504990,
+      "right_in_rows": 0,
+      "table": null,
+      "children": [
+        "n13",
+        "n15"
+      ],
+      "queries": [
+        "query_1"
+      ]
+    },
+    {
+      "id": "n17",
+      "op": "scan",
+      "out_rows": 926,
+      "in_rows": 234997,
+      "left_in_rows": null,
+      "right_in_rows": null,
+      "table": "G",
+      "children": [],
+      "queries": [
+        "query_1"
+      ]
+    },
+    {
+      "id": "n18",
+      "op": "filter",
+      "out_rows": 926,
+      "in_rows": 926,
+      "left_in_rows": null,
+      "right_in_rows": null,
+      "table": null,
+      "children": [
+        "n17"
+      ],
+      "queries": [
+        "query_1"
+      ]
+    },
+    {
+      "id": "n19",
+      "op": "join",
+      "out_rows": 563,
+      "in_rows": null,
+      "left_in_rows": 926,
+      "right_in_rows": 926,
+      "table": null,
+      "children": [
+        "n16",
+        "n18"
+      ],
+      "queries": [
+        "query_1"
+      ]
+    },
+    {
+      "id": "n20",
+      "op": "scan",
+      "out_rows": 563,
+      "in_rows": 7,
+      "left_in_rows": null,
+      "right_in_rows": null,
+      "table": "H",
+      "children": [],
+      "queries": [
+        "query_1"
+      ]
+    },
+    {
+      "id": "n21",
+      "op": "filter",
+      "out_rows": 563,
+      "in_rows": 563,
+      "left_in_rows": null,
+      "right_in_rows": null,
+      "table": null,
+      "children": [
+        "n20"
+      ],
+      "queries": [
+        "query_1"
+      ]
+    },
+    {
+      "id": "n22",
+      "op": "join",
+      "out_rows": 372,
+      "in_rows": null,
+      "left_in_rows": 563,
+      "right_in_rows": 563,
+      "table": null,
+      "children": [
+        "n19",
+        "n21"
+      ],
+      "queries": [
+        "query_1"
+      ]
+    },
+    {
+      "id": "n23",
+      "op": "aggregate",
+      "out_rows": 1,
+      "in_rows": 372,
+      "left_in_rows": null,
+      "right_in_rows": null,
+      "table": null,
+      "children": [
+        "n22"
+      ],
+      "queries": [
+        "query_1"
+      ]
+    }
+  ],
+  "query_roots": {
+    "query_1": "n23"
+  }
+}

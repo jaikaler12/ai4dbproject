@@ -1,0 +1,1 @@
+SELECT COUNT(*) FROM (SELECT tn1.g_n16 FROM tbl_a AS tn1 JOIN tbl_b AS tn2 ON tn2.fk_n14 = tn1.id JOIN tbl_c AS tn3 ON tn3.fk_n15 = tn1.id WHERE (tn1.id >= 50000 AND tn1.id < 62000) AND (tn2.id >= 0 AND tn2.id < 100000) AND (tn3.id >= 0 AND tn3.id < 200000) GROUP BY tn1.g_n16) q;

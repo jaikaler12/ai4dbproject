@@ -1,0 +1,36 @@
+[
+  {
+    "Plan": {
+      "Node Type": "HashAggregate",
+      "Strategy": "Plain",
+      "Group Key": ["o.cid"],
+      "Actual Rows": 5000,
+      "Actual Loops": 1,
+      "Plans": [
+        {
+          "Node Type": "Hash Join",
+          "Join Type": "Inner",
+          "Hash Cond": "l.order_id = o.id",
+          "Actual Rows": 20000,
+          "Actual Loops": 1,
+          "Plans": [
+            {
+              "Node Type": "Seq Scan",
+              "Relation Name": "lineitem",
+              "Actual Rows": 1000000,
+              "Actual Loops": 1
+            },
+            {
+              "Node Type": "Seq Scan",
+              "Relation Name": "orders",
+              "Filter": "(status = 'O'::text)",
+              "Rows Removed by Filter": 400000,
+              "Actual Rows": 100000,
+              "Actual Loops": 1
+            }
+          ]
+        }
+      ]
+    }
+  }
+]
