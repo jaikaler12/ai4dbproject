@@ -1,0 +1,12 @@
+{
+ "tbl_a": "movie_info",
+ "tbl_b": "info_type",
+ "tbl_c": "movie_companies",
+ "tbl_d": "movie_info_idx",
+ "tbl_e": "company_type",
+ "tbl_f": "title",
+ "tbl_g": "company_name",
+ "tbl_h": "kind_type",
+ "tbl_i": "cast_info",
+ "tbl_j": "name"
+}

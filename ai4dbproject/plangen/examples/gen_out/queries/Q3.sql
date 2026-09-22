@@ -1,1 +1,0 @@
-SELECT COUNT(*) FROM (SELECT tn2.g_n10 FROM tbl_b AS tn2 WHERE (tn2.id >= 100000 AND tn2.id < 250000) GROUP BY tn2.g_n10) q;

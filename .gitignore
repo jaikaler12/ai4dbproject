@@ -1,0 +1,13 @@
+# ---------------------------------------------------------------------------
+# Generated fake database.
+# These are rebuilt from dag/dag.json by:  python3 -m dbgen.cli --dag dag/dag.json -o output
+# so they never belong in git -- tbl_a.csv and tbl_i.csv alone are ~1.5 GB.
+# ---------------------------------------------------------------------------
+*.csv
+
+# Python bytecode
+__pycache__/
+*.pyc
+
+# macOS junk
+.DS_Store

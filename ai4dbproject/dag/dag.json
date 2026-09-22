@@ -1,13 +1,45 @@
 {
   "tables": {
-    "A": 14835720,
-    "B": 113,
-    "C": 2609129,
-    "D": 1380035,
-    "E": 4,
-    "F": 2528312,
-    "G": 234997,
-    "H": 7
+    "A": {
+      "rows": 14835720,
+      "width": 89
+    },
+    "B": {
+      "rows": 113,
+      "width": 72
+    },
+    "C": {
+      "rows": 2609129,
+      "width": 59
+    },
+    "D": {
+      "rows": 1380035,
+      "width": 47
+    },
+    "E": {
+      "rows": 4,
+      "width": 47
+    },
+    "F": {
+      "rows": 2528312,
+      "width": 117
+    },
+    "G": {
+      "rows": 234997,
+      "width": 104
+    },
+    "H": {
+      "rows": 7,
+      "width": 47
+    },
+    "I": {
+      "rows": 36244344,
+      "width": 57
+    },
+    "J": {
+      "rows": 4167491,
+      "width": 109
+    }
   },
   "nodes": [
     {
@@ -20,7 +52,8 @@
       "table": "A",
       "children": [],
       "queries": [
-        "query_1"
+        "query_1",
+        "query_2"
       ]
     },
     {
@@ -33,7 +66,8 @@
       "table": "B",
       "children": [],
       "queries": [
-        "query_1"
+        "query_1",
+        "query_2"
       ]
     },
     {
@@ -90,7 +124,8 @@
       "table": "D",
       "children": [],
       "queries": [
-        "query_1"
+        "query_1",
+        "query_2"
       ]
     },
     {
@@ -216,7 +251,7 @@
     {
       "id": "n15",
       "op": "filter",
-      "out_rows": 0,
+      "out_rows": 926,
       "in_rows": 2504990,
       "left_in_rows": null,
       "right_in_rows": null,
@@ -234,7 +269,7 @@
       "out_rows": 926,
       "in_rows": null,
       "left_in_rows": 2504990,
-      "right_in_rows": 0,
+      "right_in_rows": 926,
       "table": null,
       "children": [
         "n13",
@@ -260,7 +295,7 @@
     {
       "id": "n18",
       "op": "filter",
-      "out_rows": 926,
+      "out_rows": 563,
       "in_rows": 926,
       "left_in_rows": null,
       "right_in_rows": null,
@@ -278,7 +313,7 @@
       "out_rows": 563,
       "in_rows": null,
       "left_in_rows": 926,
-      "right_in_rows": 926,
+      "right_in_rows": 563,
       "table": null,
       "children": [
         "n16",
@@ -291,7 +326,7 @@
     {
       "id": "n20",
       "op": "scan",
-      "out_rows": 563,
+      "out_rows": 7,
       "in_rows": 7,
       "left_in_rows": null,
       "right_in_rows": null,
@@ -304,8 +339,8 @@
     {
       "id": "n21",
       "op": "filter",
-      "out_rows": 563,
-      "in_rows": 563,
+      "out_rows": 1,
+      "in_rows": 7,
       "left_in_rows": null,
       "right_in_rows": null,
       "table": null,
@@ -322,7 +357,7 @@
       "out_rows": 372,
       "in_rows": null,
       "left_in_rows": 563,
-      "right_in_rows": 563,
+      "right_in_rows": 1,
       "table": null,
       "children": [
         "n19",
@@ -346,9 +381,235 @@
       "queries": [
         "query_1"
       ]
+    },
+    {
+      "id": "n24",
+      "op": "scan",
+      "out_rows": 36244344,
+      "in_rows": 36244344,
+      "left_in_rows": null,
+      "right_in_rows": null,
+      "table": "I",
+      "children": [],
+      "queries": [
+        "query_2"
+      ]
+    },
+    {
+      "id": "n25",
+      "op": "filter",
+      "out_rows": 1244716,
+      "in_rows": 36244344,
+      "left_in_rows": null,
+      "right_in_rows": null,
+      "table": null,
+      "children": [
+        "n24"
+      ],
+      "queries": [
+        "query_2"
+      ]
+    },
+    {
+      "id": "n26",
+      "op": "filter",
+      "out_rows": 188971,
+      "in_rows": 14835720,
+      "left_in_rows": null,
+      "right_in_rows": null,
+      "table": null,
+      "children": [
+        "n1"
+      ],
+      "queries": [
+        "query_2"
+      ]
+    },
+    {
+      "id": "n27",
+      "op": "filter",
+      "out_rows": 1,
+      "in_rows": 113,
+      "left_in_rows": null,
+      "right_in_rows": null,
+      "table": null,
+      "children": [
+        "n2"
+      ],
+      "queries": [
+        "query_2"
+      ]
+    },
+    {
+      "id": "n28",
+      "op": "join",
+      "out_rows": 459925,
+      "in_rows": null,
+      "left_in_rows": 1380035,
+      "right_in_rows": 1,
+      "table": null,
+      "children": [
+        "n6",
+        "n27"
+      ],
+      "queries": [
+        "query_2"
+      ]
+    },
+    {
+      "id": "n29",
+      "op": "join",
+      "out_rows": 104892,
+      "in_rows": null,
+      "left_in_rows": 188971,
+      "right_in_rows": 459925,
+      "table": null,
+      "children": [
+        "n26",
+        "n28"
+      ],
+      "queries": [
+        "query_2"
+      ]
+    },
+    {
+      "id": "n30",
+      "op": "filter",
+      "out_rows": 1,
+      "in_rows": 113,
+      "left_in_rows": null,
+      "right_in_rows": null,
+      "table": null,
+      "children": [
+        "n2"
+      ],
+      "queries": [
+        "query_2"
+      ]
+    },
+    {
+      "id": "n31",
+      "op": "join",
+      "out_rows": 102516,
+      "in_rows": null,
+      "left_in_rows": 104892,
+      "right_in_rows": 1,
+      "table": null,
+      "children": [
+        "n29",
+        "n30"
+      ],
+      "queries": [
+        "query_2"
+      ]
+    },
+    {
+      "id": "n32",
+      "op": "join",
+      "out_rows": 54155,
+      "in_rows": null,
+      "left_in_rows": 1244716,
+      "right_in_rows": 102516,
+      "table": null,
+      "children": [
+        "n25",
+        "n31"
+      ],
+      "queries": [
+        "query_2"
+      ]
+    },
+    {
+      "id": "n33",
+      "op": "scan",
+      "out_rows": 54155,
+      "in_rows": 4167491,
+      "left_in_rows": null,
+      "right_in_rows": null,
+      "table": "J",
+      "children": [],
+      "queries": [
+        "query_2"
+      ]
+    },
+    {
+      "id": "n34",
+      "op": "filter",
+      "out_rows": 28073,
+      "in_rows": 54155,
+      "left_in_rows": null,
+      "right_in_rows": null,
+      "table": null,
+      "children": [
+        "n33"
+      ],
+      "queries": [
+        "query_2"
+      ]
+    },
+    {
+      "id": "n35",
+      "op": "join",
+      "out_rows": 28073,
+      "in_rows": null,
+      "left_in_rows": 54155,
+      "right_in_rows": 28073,
+      "table": null,
+      "children": [
+        "n32",
+        "n34"
+      ],
+      "queries": [
+        "query_2"
+      ]
+    },
+    {
+      "id": "n36",
+      "op": "scan",
+      "out_rows": 28073,
+      "in_rows": 2528312,
+      "left_in_rows": null,
+      "right_in_rows": null,
+      "table": "F",
+      "children": [],
+      "queries": [
+        "query_2"
+      ]
+    },
+    {
+      "id": "n37",
+      "op": "join",
+      "out_rows": 28073,
+      "in_rows": null,
+      "left_in_rows": 28073,
+      "right_in_rows": 28073,
+      "table": null,
+      "children": [
+        "n35",
+        "n36"
+      ],
+      "queries": [
+        "query_2"
+      ]
+    },
+    {
+      "id": "n38",
+      "op": "aggregate",
+      "out_rows": 1,
+      "in_rows": 28073,
+      "left_in_rows": null,
+      "right_in_rows": null,
+      "table": null,
+      "children": [
+        "n37"
+      ],
+      "queries": [
+        "query_2"
+      ]
     }
   ],
   "query_roots": {
-    "query_1": "n23"
+    "query_1": "n23",
+    "query_2": "n38"
   }
 }

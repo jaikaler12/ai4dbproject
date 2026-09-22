@@ -1,10 +1,12 @@
 {
-  "company_name": 234997,
-  "company_type": 4,
-  "info_type": 113,
-  "kind_type": 7,
-  "movie_companies": 2609129,
-  "movie_info": 14835720,
-  "movie_info_idx": 1380035,
-  "title": 2528312
+  "movie_info":      {"rows": 14835720, "width": 89},
+  "info_type":       {"rows": 113,      "width": 72},
+  "movie_companies": {"rows": 2609129,  "width": 59},
+  "title":           {"rows": 2528312,  "width": 117},
+  "movie_info_idx":  {"rows": 1380035,  "width": 47},
+  "kind_type":       {"rows": 7,        "width": 47},
+  "company_name":    {"rows": 234997,   "width": 104},
+  "company_type":    {"rows": 4,        "width": 47},
+  "cast_info":       {"rows": 36244344, "width": 57},
+  "name":            {"rows": 4167491,  "width": 109}
 }

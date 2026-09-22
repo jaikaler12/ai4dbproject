@@ -78,7 +78,7 @@ def topological(nodes: dict[str, DagNode]) -> list[DagNode]:
 
 def annotate(nodes: dict[str, DagNode],
              table_sizes: dict[str, int] | None = None) -> None:
-    sizes = {k.lower(): v for k, v in (table_sizes or {}).items()}
+    sizes = {k.lower(): _rows_of(v) for k, v in (table_sizes or {}).items()}
     for n in topological(nodes):
         if n.op == "scan":
             true_size = sizes.get((n.table or "").lower())
@@ -113,7 +113,12 @@ def _table_aliases(nodes: dict[str, DagNode]) -> dict[str, str]:
     return aliases
 
 
-def _aliased_sizes(dag: dict, aliases: dict[str, str]) -> dict[str, int]:
+def _rows_of(v):
+    """A catalog entry is either a plain row count or {"rows":n,"width":w}."""
+    return v["rows"] if isinstance(v, dict) else v
+
+
+def _aliased_sizes(dag: dict, aliases: dict[str, str]) -> dict:
     sizes = {k.lower(): v for k, v in dag.get("table_sizes", {}).items()}
     return {alias: sizes[t] for t, alias in aliases.items() if t in sizes}
 
@@ -125,7 +130,11 @@ def render_text(dag: dict) -> str:
     if sizes:
         lines.append("tables:")
         for alias, size in sorted(sizes.items()):
-            lines.append(f"  {alias} = {size}")
+            if isinstance(size, dict):
+                lines.append(f"  {alias} = {size['rows']} rows, "
+                             f"{size['width']} bytes/row")
+            else:
+                lines.append(f"  {alias} = {size}")
         lines.append("")
     roots = dag["roots"]
     for n in topological(dag["nodes"]):
@@ -145,9 +154,6 @@ def render_text(dag: dict) -> str:
         if n.right_in_rows is not None:
             extra.append(f"rin={n.right_in_rows}")
         extra.append(f"out={n.out_rows}")
-        # display only, recomputed from the numbers -- never stored
-        if n.op == "scan" and n.in_rows is not None:
-            extra.append("read=all" if n.out_rows >= n.in_rows else "read=part")
         line = f"{base}  {' '.join(extra)}"
         if len(n.queries) == 1:
             q = next(iter(n.queries))

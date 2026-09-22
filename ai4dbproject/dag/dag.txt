@@ -1,33 +1,50 @@
 tables:
-  A = 14835720
-  B = 113
-  C = 2609129
-  D = 1380035
-  E = 4
-  F = 2528312
-  G = 234997
-  H = 7
+  A = 14835720 rows, 89 bytes/row      (movie_info)
+  B = 113 rows, 72 bytes/row      (info_type)
+  C = 2609129 rows, 59 bytes/row      (movie_companies)
+  D = 1380035 rows, 47 bytes/row      (movie_info_idx)
+  E = 4 rows, 47 bytes/row      (company_type)
+  F = 2528312 rows, 117 bytes/row      (title)
+  G = 234997 rows, 104 bytes/row      (company_name)
+  H = 7 rows, 47 bytes/row      (kind_type)
+  I = 36244344 rows, 57 bytes/row      (cast_info)
+  J = 4167491 rows, 109 bytes/row      (name)
 
-n1=scan(A)  in=14835720 out=14835720 read=all
-n2=scan(B)  in=113 out=113 read=all
+n1=scan(A)  in=14835720 out=14835720  === shared:query_1,query_2 ===
+n2=scan(B)  in=113 out=113  === shared:query_1,query_2 ===
 n3=filter(n2)  in=113 out=1
 n4=join(n1,n3)  lin=14835720 rin=1 out=3036719
-n5=scan(C)  in=2609129 out=2609129 read=all
-n6=scan(D)  in=1380035 out=1380035 read=all
+n5=scan(C)  in=2609129 out=2609129
+n6=scan(D)  in=1380035 out=1380035  === shared:query_1,query_2 ===
 n7=filter(n2)  in=113 out=1
 n8=join(n6,n7)  lin=1380035 rin=1 out=459925
 n9=join(n5,n8)  lin=2609129 rin=459925 out=1354883
-n10=scan(E)  in=4 out=4 read=all
+n10=scan(E)  in=4 out=4
 n11=filter(n10)  in=4 out=1
 n12=join(n9,n11)  lin=1354883 rin=1 out=584222
 n13=join(n4,n12)  lin=3036719 rin=584222 out=2504990
-n14=scan(F)  in=2528312 out=2504990 read=part
-n15=filter(n14)  in=2504990 out=0
-n16=join(n13,n15)  lin=2504990 rin=0 out=926
-n17=scan(G)  in=234997 out=926 read=part
-n18=filter(n17)  in=926 out=926
-n19=join(n16,n18)  lin=926 rin=926 out=563
-n20=scan(H)  in=7 out=563 read=all
-n21=filter(n20)  in=563 out=563
-n22=join(n19,n21)  lin=563 rin=563 out=372
+n14=scan(F)  in=2528312 out=2504990
+n15=filter(n14)  in=2504990 out=926
+n16=join(n13,n15)  lin=2504990 rin=926 out=926
+n17=scan(G)  in=234997 out=926
+n18=filter(n17)  in=926 out=563
+n19=join(n16,n18)  lin=926 rin=563 out=563
+n20=scan(H)  in=7 out=7
+n21=filter(n20)  in=7 out=1
+n22=join(n19,n21)  lin=563 rin=1 out=372
 n23=aggregate(n22)  in=372 out=1  === query_1 ===
+n24=scan(I)  in=36244344 out=36244344
+n25=filter(n24)  in=36244344 out=1244716
+n26=filter(n1)  in=14835720 out=188971
+n27=filter(n2)  in=113 out=1
+n28=join(n6,n27)  lin=1380035 rin=1 out=459925
+n29=join(n26,n28)  lin=188971 rin=459925 out=104892
+n30=filter(n2)  in=113 out=1
+n31=join(n29,n30)  lin=104892 rin=1 out=102516
+n32=join(n25,n31)  lin=1244716 rin=102516 out=54155
+n33=scan(J)  in=4167491 out=54155
+n34=filter(n33)  in=54155 out=28073
+n35=join(n32,n34)  lin=54155 rin=28073 out=28073
+n36=scan(F)  in=2528312 out=28073
+n37=join(n35,n36)  lin=28073 rin=28073 out=28073
+n38=aggregate(n37)  in=28073 out=1  === query_2 ===
